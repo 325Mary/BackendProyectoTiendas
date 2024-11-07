@@ -14,8 +14,8 @@ const Usuario = {
     return pool.execute(sql);
   },
   create: function(usuarioData) {
-    const sql = `INSERT INTO usuario (idRol,  identificacion, nombre_usuario, apellido_usuario, telefono_usuario, email_usuario, password, estado, firstLogin) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-    return pool.execute(sql, [usuarioData.idRol, usuarioData.identificacion, usuarioData.nombre_usuario, usuarioData.apellido_usuario, usuarioData.telefono_usuario, usuarioData.email_usuario, usuarioData.password, usuarioData.estado, usuarioData.firstLogin]);
+    const sql = `INSERT INTO usuario (idRol, idTienda,  identificacion, nombre_usuario, apellido_usuario, telefono_usuario, email_usuario, password, estado, firstLogin) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    return pool.execute(sql, [usuarioData.idRol, usuarioData.idTienda, usuarioData.identificacion, usuarioData.nombre_usuario, usuarioData.apellido_usuario, usuarioData.telefono_usuario, usuarioData.email_usuario, usuarioData.password, usuarioData.estado, usuarioData.firstLogin]);
   }
 };
 

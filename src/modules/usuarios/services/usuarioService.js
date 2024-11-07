@@ -14,7 +14,7 @@ require('dotenv').config();
 
 async function crearUsuario(usuarioData) {
   try {
-      if (!usuarioData || !usuarioData.idRol  || !usuarioData.identificacion || !usuarioData.nombre_usuario || !usuarioData.apellido_usuario || !usuarioData.telefono_usuario || !usuarioData.email_usuario || !usuarioData.estado ) {
+      if (!usuarioData || !usuarioData.idRol || !usuarioData.idTienda  || !usuarioData.identificacion || !usuarioData.nombre_usuario || !usuarioData.apellido_usuario || !usuarioData.telefono_usuario || !usuarioData.email_usuario || !usuarioData.estado ) {
           throw new Error('Faltan datos del usuario');
       }
 
@@ -98,9 +98,10 @@ async function editarUsuario(idUsuario, nuevoUsuarioData) {
     const usuarioActualizado = { ...usuarioExistente, ...nuevoUsuarioData };
 
     const [result] = await pool.execute(
-      'UPDATE usuario SET idRol = ?,   identificacion = ?, nombre_usuario = ?, apellido_usuario = ?, telefono_usuario = ?, email_usuario = ?, password = ?, estado  = ? WHERE idUsuario = ?',
+      'UPDATE usuario SET idRol = ?, idTienda = ?,  identificacion = ?, nombre_usuario = ?, apellido_usuario = ?, telefono_usuario = ?, email_usuario = ?, password = ?, estado  = ? WHERE idUsuario = ?',
       [
         usuarioActualizado.idRol,
+        usuarioActualizado.idTienda,
         usuarioActualizado.identificacion,
         usuarioActualizado.nombre_usuario,
         usuarioActualizado.apellido_usuario,
